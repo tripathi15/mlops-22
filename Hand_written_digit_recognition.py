@@ -27,8 +27,12 @@ from skimage.transform import rescale, resize, downscale_local_mean
 gamma_list = [0.01, 0.005, 0.001, 0.0005, 0.0001]
 c_list = [0.1, 0.2, 0.5, 0.7, 1, 2, 5, 7, 10] 
 
-train_frac = 0.8
-test_frac = 0.1
+#train_frac = 0.8
+#test_frac = 0.1
+#dev_frac = 0.1
+
+train_frac = 0.7
+test_frac = 0.2
 dev_frac = 0.1
 
 
@@ -134,13 +138,33 @@ for size in img_sizes:
     print(f"\nBest hyper-params are: {best_h_params}")
     print(f"Dev set accuracy with Best hyper-params is: {best_acc}\n")
 
+    ## Min, Max, mean, Median accurcay
+
+    print("Train set:\n")
+    print("Min accuracy on Train set", acc_df['train'].min())
+    print("Max accuracy on Train set", acc_df['train'].max())
+    print("Mean accuracy on Train set", acc_df['train'].mean())
+    print("Median accuracy on Train set", acc_df['train'].median())
+
+    print("\nTest set:\n")
+    print("Min accuracy on Test set", acc_df['test'].min())
+    print("Max accuracy on Test set", acc_df['test'].max())
+    print("Mean accuracy on Test set", acc_df['test'].mean())
+    print("Median accuracy on Test set", acc_df['test'].median())
+
+    print("\ndev set:\n")
+    print("Min accuracy on dev set", acc_df['dev'].min())
+    print("Max accuracy on dev set", acc_df['dev'].max())
+    print("Mean accuracy on dev set", acc_df['dev'].mean())
+    print("Median accuracy on dev set", acc_df['dev'].median())
+
     
     ## Calculation of train, dev, test set accuracy with best hyper-params
 
     for _, features, target in zip(["train","dev","test"],[X_train, X_dev, X_test],[y_train, y_dev, y_test]):
         predicted = best_model.predict(features)
         acc = metrics.accuracy_score(y_pred = predicted, y_true = target)
-        print(f"Accuracy for {_} set using best hyper-params is: {acc}")
+        print(f"\n\nAccuracy for {_} set using best hyper-params is: {acc}")
 
     print("\n")
 
