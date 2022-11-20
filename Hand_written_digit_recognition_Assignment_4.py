@@ -180,9 +180,9 @@ acc_df.to_markdown("readme.md")
 
 ## save best models of DT and SVC
 
-joblib.dump(best_model_svc, '/models/best_model_svc.pkl')
-joblib.dump(best_model_dt, '/models/best_model_dt.pkl')
+joblib.dump(best_model_svc, '/Models/best_model_svc.pkl')
+joblib.dump(best_model_dt, '/Models/best_model_dt.pkl')
 
 ## Save the results
 
-acc_df.to_markdown("svm_dt_random_state_42.txt")
+acc_df.to_markdown("/results/svm_dt_random_state_42.txt")
