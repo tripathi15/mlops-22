@@ -29,6 +29,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 gamma_list = [0.01, 0.005, 0.001, 0.0005, 0.0001]
 c_list = [0.1, 0.2, 0.5, 0.7, 1, 2, 5, 7, 10]
+random_state = 42
 
 # Decision Tree classifier parameter: We will use max_depth,  min_samples_leaf, and criterion parameter for tunning
 
@@ -78,7 +79,7 @@ for i in range(5):
             ## Define the model
             ## Create a classifier: a Support Vector classifier
             
-            clf = svm.SVC(gamma = g, C = c, random_state = 42)
+            clf = svm.SVC(gamma = g, C = c, random_state = random_state)
 
             ## Train the model
             ## Learn the digits on the train subset
@@ -107,7 +108,7 @@ for i in range(5):
                 ## Define the model
                 ## Create a classifier: a Decision Tree classifier
                 
-                clf = DecisionTreeClassifier(max_depth = d, min_samples_leaf = l, criterion = c, random_state = 42)
+                clf = DecisionTreeClassifier(max_depth = d, min_samples_leaf = l, criterion = c, random_state = random_state)
 
                 ## Train the model
                 ## Learn the digits on the train subset
@@ -175,3 +176,10 @@ print("\n")
 ## Write the performance metrics in the readme.md
 
 acc_df.to_markdown("readme.md")
+
+## save best models of DT and SVC
+
+import joblib
+
+joblib.dump(best_model_svc, '/models/best_model_svc.pkl')
+joblib.dump(best_model_dt, '/models/best_model_dt.pkl')
