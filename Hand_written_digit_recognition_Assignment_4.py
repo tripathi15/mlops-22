@@ -178,7 +178,7 @@ print("\n")
 
 acc_df.to_markdown("readme.md")
 
-## save best models of DT and SVC
+## Save best models of DT and SVC
 
 joblib.dump(best_model_svc, '/Models/best_model_svc.pkl')
 joblib.dump(best_model_dt, '/Models/best_model_dt.pkl')
