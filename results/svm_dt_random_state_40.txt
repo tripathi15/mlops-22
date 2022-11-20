@@ -7,3 +7,6 @@
 |  4 | Run 5 | 0.996528  | 0.927083  |
 |  5 | mean  | 0.989033  | 0.909937  |
 |  6 | std   | 0.0065352 | 0.0381749 |
+
+Model saved at: ./models/best_model_dt.pkl
+Model saved at: ./models/best_model_svc.pkl

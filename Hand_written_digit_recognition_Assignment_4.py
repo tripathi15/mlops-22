@@ -21,6 +21,7 @@ from sklearn import datasets, svm, metrics
 from sklearn.model_selection import train_test_split
 from skimage.transform import rescale, resize, downscale_local_mean
 from sklearn.tree import DecisionTreeClassifier
+import joblib
 
 
 ## Part 2: Set the ranges of hyper parameters for hyper-parameter tunning
@@ -179,7 +180,9 @@ acc_df.to_markdown("readme.md")
 
 ## save best models of DT and SVC
 
-import joblib
-
 joblib.dump(best_model_svc, '/models/best_model_svc.pkl')
 joblib.dump(best_model_dt, '/models/best_model_dt.pkl')
+
+## Save the results
+
+acc_df.to_markdown("svm_dt_random_state_42.txt")
